@@ -5,7 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZeppBamboo - Zeppelin Home Floating Village</title>
   <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; backgr<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeppBamboo - Zeppelin Home Floating Village</title>
+  <style>
     body { font-family: Arial, sans-serif; margin:0; padding:0; background: #f0f8ff; color:#333; }
+    header, section { padding: 60px 20px; text-align: center; }
+    h1, h2 { color: #1e3a8a; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 1.5em; margin-top:40px; }
+    .feature-card { background:white; border-radius:15px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    .gallery { padding: 60px 20px; background:#e0f2fe; }
+    #gallery-list { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5em; }
+    .gallery-item { background:white; padding:10px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .gallery-item img, .gallery-item video { width:100%; border-radius:10px; }
+    .gallery-desc { margin-top:8px; font-size:0.9em; color:#555; }
+    .download-btn { display:inline-block; margin-top:20px; padding:12px 25px; background:#1e3a8a; color:white; border-radius:25px; text-decoration:none; font-weight:bold; }
+    footer { padding:40px 20px; background:#1e3a8a; color:white; }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<header>
+  <h1>Zeppelin Home + Bamboo Floating Village</h1>
+  <p>AI-powered zeppelin-inspired floating homes. Modular bamboo villages. Expandable, sustainable, and weatherproof.</p>
+  <video autoplay muted loop playsinline style="max-width:600px; border-radius:15px; margin-top:20px;">
+    <source src="/assets/zeppbamboo/videos/zeppelin-floating-village.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</header>
+
+<!-- Features Section -->
+<section>
+  <h2>Key Features</h2>
+  <div class="features">
+    <div class="feature-card">
+      <h3>AI Smart Home Automation</h3>
+      <p>Intelligent systems manage comfort, safety, and energy efficiency.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Bamboo Architecture</h3>
+      <p>Renewable, strong, and beautiful bamboo structures for sustainable luxury.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Expandable Floating Metropolis</h3>
+      <p>Start with a single home and grow into a floating city with modular platforms.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Mobility & Relocation</h3>
+      <p>Move the village in response to environment or resident choice.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Weatherproof Resilience</h3>
+      <p>Zeppelin-inspired design ensures stability in any climate.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Luxury & Eco-Friendly</h3>
+      <p>High-end amenities with eco-friendly energy innovations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery" id="gallery">
+  <h2>Project Media, Videos & 3D Models</h2>
+  <div id="gallery-list">
+    <!-- Items injected by JavaScript -->
+  </div>
+  <a href="/assets/zeppbamboo/zeppbamboo-assets.zip" class="download-btn">Download All Assets (ZIP)</a>
+</section>
+
+<!-- Gallery Script -->
+<script>
+  const imageExtensions = ['png','jpg','jpeg','gif','svg','bmp','webp'];
+  const videoExtensions = ['mp4','webm','ogg','mov'];
+  const modelExtensions = ['obj','fbx','stl','glb','dae','3ds','blend'];
+
+  const mediaFiles = [
+    "zeppelin-logo.png","dashboard-preview.png","press-kit-banner.png",
+    "crowdfunding-banner.png","funding-progress.png","funding-breakdown.png",
+    "community-banner.png","community-stats.png","community-thanks.png",
+    "media-assets-preview.png","zeppelin-tech.svg","zeppelin-hero.svg","zeppelin-interior.svg",
+    "concept-video.mp4","floating-village-showcase.webm"
+  ];
+
+  const modelFiles = [
+    // Example: "zeppelin-home.obj","floating-village.glb"
+  ];
+
+  function createGalleryItem(filename, folder) {
+    const ext = filename.split('.').pop().toLowerCase();
+    let preview;
+    if (imageExtensions.includes(ext)) {
+      preview = `<img src="${folder}/${filename}" alt="${filename}">`;
+    } else if (videoExtensions.includes(ext)) {
+      preview = `<video controls autoplay muted loop><source src="${folder}/${filename}" type="video/${ext}">Your browser does not support the video tag.</video>`;
+    } else if (modelExtensions.includes(ext)) {
+      preview = `<div style="padding:1em;color:#666;font-size:1.2em;">${filename}<br><span style="font-size:0.9em;">(${ext} model)</span></div>`;
+    } else {
+      preview = `<div style="color:#999;">${filename}</div>`;
+    }
+    return `<div class="gallery-item">${preview}<div class="gallery-desc">${filename}<br><a href="${folder}/${filename}" download>Download</a></div></div>`;
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    const gallery = document.getElementById("gallery-list");
+    mediaFiles.forEach(f => gallery.innerHTML += createGalleryItem(f,"/assets/zeppbamboo/media"));
+    modelFiles.forEach(f => gallery.innerHTML += createGalleryItem(f,"/assets/zeppbamboo/models"));
+  });
+</script>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 ZeppBamboo Project. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+ound: #f0f8ff; color:#333; }
     header, section { padding: 60px 20px; text-align: center; }
     h1, h2 { color: #1e3a8a; }
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 1.5em; margin-top:40px; }
