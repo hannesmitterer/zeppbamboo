@@ -1,0 +1,37 @@
+<!-- Gallery Section: auto-populate from media/ and models/ -->
+<section class="gallery" id="gallery">
+  <h2>Project Media & 3D Models</h2>
+  <div id="gallery-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5em;">
+    <!-- Items will be injected by JavaScript -->
+  </div>
+</section>
+<script>
+  // Supported extensions for images and models
+  const mediaExtensions = ['png','jpg','jpeg','gif','svg','bmp','webp'];
+  const modelExtensions = ['obj','fbx','stl','glb','dae','3ds','blend'];
+  // List of known files from search (add/remove as needed)
+  const mediaFiles = [
+    "zeppelin-logo.png","dashboard-preview.png","press-kit-banner.png","crowdfunding-banner.png","funding-progress.png","funding-breakdown.png",
+    "community-banner.png","community-stats.png","community-thanks.png","media-assets-preview.png","zeppelin-tech.svg","zeppelin-hero.svg","zeppelin-interior.svg"
+  ];
+  const modelFiles = []; // Add names like "zeppelin-home.obj", etc.
+
+  function createGalleryItem(filename, folder, type) {
+    const ext = filename.split('.').pop().toLowerCase();
+    let preview;
+    if (mediaExtensions.includes(ext)) {
+      preview = `<img src="${folder}/${filename}" alt="${filename}" style="max-width:210px;">`;
+    } else if (modelExtensions.includes(ext)) {
+      preview = `<div style="padding:1em;color:#666;font-size:1.2em;">${filename}<br><span style="font-size:0.9em;">(${ext} model)</span></div>`;
+    } else {
+      preview = `<div style="color:#999;">${filename}</div>`;
+    }
+    return `<div class="gallery-item">${preview}<div class="gallery-desc">${filename} <br><a href="${folder}/${filename}" download>Download</a></div></div>`;
+  }
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    const gallery = document.getElementById("gallery-list");
+    mediaFiles.forEach(f=>gallery.innerHTML += createGalleryItem(f,"media","image"));
+    modelFiles.forEach(f=>gallery.innerHTML += createGalleryItem(f,"models","model"));
+  });
+</script>
